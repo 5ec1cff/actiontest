@@ -1,0 +1,20 @@
+name: Test Push
+on:
+  workflow_dispatch:
+jobs:
+  push:
+    runs-on: ubuntu-latest
+    steps:
+      - name: push
+        run: |
+          mkdir content
+          cd content
+          git config --global init.defaultBranch bot
+          git config --global user.name 'Bot'
+          git config --global user.email 'bot@github.5ec1cff.io'
+          git init .
+          echo $(date) > a.txt
+          git add .
+          git remote add origin https://x-access-token:${{ secrets.TOKEN }}@github.com/${{ github.repository }}
+          git commit -m "Auto commit"
+          git push origin bot --force
