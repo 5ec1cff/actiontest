@@ -1,0 +1,17 @@
+name: Test
+
+on:
+  push:
+    branches: [ "main", "ci" ]
+  pull_request:
+    branches: [ "main" ]
+  workflow_dispatch:
+
+jobs:
+  aa:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Echo event
+        run: |
+          echo '${{ github.event }}'
